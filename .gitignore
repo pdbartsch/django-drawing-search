@@ -1,0 +1,5 @@
+data/*
+.vscode/settings.json
+djrawings/__pycache__/*
+drawport/__pycache__/*
+*.pyc
