@@ -4,3 +4,4 @@ djrawings/__pycache__/*
 drawport/__pycache__/*
 *.pyc
 ucsb_drawings/drawsearch/migrations/*
+ucsb_drawings/drawings.sqlite3
