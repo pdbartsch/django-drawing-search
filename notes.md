@@ -29,6 +29,7 @@ CREATE TABLE `draw` (
 `.mode csv`
 
 `.import data/draw.csv draw`
+`.import ../data/draw.csv drawsearch_search`
 
 select NewName from draw where LocationNumber = 525 and DrawingNumber = 101 and Discipline like '%arch%';
 
