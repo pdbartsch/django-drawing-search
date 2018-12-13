@@ -1,0 +1,18 @@
+{% extends 'drawsearch/base.html' %}
+{% block content %}
+    {% for draw in draws %}
+        <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="#">{{ draw.title }}</a>
+                    <sma    ll class="text-muted">{{ draw.title }}</small>
+                    </div>
+                    <h2><a class="article-title" href="#">{{ draw.title }}</a></h2>
+                    <p class="article-content">Location number: {{draw.loc}} Year: {{draw.year}}</p>
+                </div>
+            </article>
+    {% endfor%}
+{% endblock content %}
+
+
+

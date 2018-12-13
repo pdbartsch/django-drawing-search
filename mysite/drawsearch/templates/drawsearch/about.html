@@ -1,0 +1,36 @@
+{% extends 'drawsearch/base.html' %}
+{% block content %}
+    <h3>Search Tips &amp; Recommendations</h3>
+
+    <dl>
+    <dt>General Notes</dt>
+    <dd>Search by one or many fields. Start with a broad search and refine later (your search will "stick").</dd>
+
+    <dt>Mobile Devices</dt>
+    <dd>Works great on the iPad and iPhone as well as most Android phones and tablets!  To reset search, either click the page title or use the button in the top right corner to reveal other links. Results will appear below search form.</dd>
+
+    <dt>Password</dt>
+    <dd>Uses UCSB NetID. Same credentials as Kronos. Currently available to all employees of Design, Facilities &amp; Safety Services.  Access for others is setup on a case by case basis.  Please request access through the UCSB Project Manager you're working with.</dd>
+
+    <dt>Location Number</dt>
+    <dd>This is typically building number but not always (e.g. Utilities and Paving). Click <button type="button" class="btn-info" data-toggle="modal" data-target="#locnumModal">HERE</button> for a list of Location Numbers.</dd>
+
+    <dt>Drawing Number</dt>
+    <dd>The first drawing number for any building will be 101. These numbers increase sequentially as work is performed.</dd>
+
+    <dt>Project Title</dt>
+    <dd>The title of the project as indicated in the title block. Results will contain your search term. Try <em>library</em>.</dd>
+
+    <dt>Sheet Title</dt>
+    <dd>The title of the sheet as indicated in the title block. Results will contain your search term. Try <em>fire</em>.</dd>
+
+    <dt>Sheet Number</dt>
+    <dd>Examples include A1.1, A_1_1 or A1-1. Best to search without at first; use for later refinement.</dd>
+
+    <dt>Design Designation</dt>
+    <dd>Choose from the dropdown. Examples include 'Architectural', 'Civil', 'Life Safety', etc.</dd>
+
+    <dt>Year Since</dt>
+    <dd>Type as yyyy. Results will be equal to or more recent than the year you type. Date refers to that printed on drawing.</dd>
+    </dl>
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends 'drawsearch/base.html' %}
+
+{% block content %}
+
+    <!-- search form start -->
+    <form action="result" method="GET">
+
+    <label for="locationNumber"><small>Location Number</small></label><input class="input-block-level" type="number" id="locationNumber" name="locnum" min="3" max="9999" autocomplete="off" placeholder="Location Number" value="">
+
+
+    <label for="drawingNumber"><small>Drawing Number</small></label><input class="input-block-level" type="number" id="drawingNumber" name="drawnum" min="101" max="999" autocomplete="off" placeholder="Drawing Number" value="">
+
+
+    <label for="projectTitle"><small>Project Title</small></label><input class="input-block-level" type="text" maxlength="50" id="projectTitle" name="projtitle" placeholder="Project Title" value="" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+
+
+    <label for="sheetTitle"><small>Sheet Title</small></label><input class="input-block-level" type="text" maxlength="50" id="sheetTitle" name="shttitle" placeholder="Sheet Title" value="">
+
+
+    <label for="sheetNumber"><small>Sheet Number</small></label><input class="input-block-level" type="text" maxlength="10" id="sheetNumber" name="shtnum" autocomplete="off" placeholder="Sheet Number" value="">
+
+        <!--start dropdown-->
+        <label for="designDesignation"><small>Design Designation</small></label>
+        <select class="input-block-level" name="discp" id="designDesignation">
+            <option value="" selected="selected">Design Designation...</option>
+            <option value="">ANY</option>
+            <option>ARCHITECTURAL</option>
+            <option>AUDIO VISUAL</option>
+            <option>CIVIL</option>
+            <option>ELECTRICAL</option>
+            <option>FIRE ALARM</option>
+            <option>GENERAL NOTES</option>
+            <option>LANDSCAPE</option>
+            <option>LIFE SAFETY</option>
+            <option>MECHANICAL</option>
+            <option>PLUMBING</option>
+            <option>SHOP DRAWINGS</option>
+            <option>SPECIFICATIONS</option>
+            <option>STRUCTURAL</option>
+            <option>TELECOMM</option>
+            <option>TITLE INDEX</option>
+            <option>TRAFFIC</option>
+        </select>
+
+        <!--end dropdown-->
+
+
+    <label for="drawingDate"><small>Year Since (yyyy)</small></label><input class="input-block-level" type="number" id="drawingDate" name="drawdate" min="1900" max="2035" autocomplete="off" placeholder="yyyy" value="">
+
+    <button class="btn btn-large btn-block btn-primary" type="submit"> &nbsp; Search &nbsp; <i class="icon-search"></i></button>
+
+    </form>
+    <!-- search form end -->
+
+{% endblock content %}
