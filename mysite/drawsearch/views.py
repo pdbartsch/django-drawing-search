@@ -5,15 +5,10 @@ from .forms import SearchForm
 
 def home(request):
     context = {
-        'title':'Home'
+        'title':'Search Tips & Recommendations'
     }
-    return render(request, 'drawsearch/search.html', context)
+    return render(request, 'drawsearch/home.html', context)
 
-def about(request):
-    context = {
-        'title':'About'
-    }
-    return render(request, 'drawsearch/about.html', context)
 
 def result(request):
     context = {
