@@ -1,0 +1,19 @@
+{% extends 'drawsearch/base.html' %}
+{% block content %}
+    {% for draw in draws %}
+        <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                            <!-- D:\UCSB_Data\000_UCSB_PDF_Drawings -->
+                        <a class="mr-2" href="#">{{ draw.NewName }}</a>
+                    <sma    ll class="text-muted">{{ draw.ProjectTitle }}</small>
+                    </div>
+                    <h2><a class="article-title" href="#">{{ draw.SheetTitle }}</a></h2>
+                    <p class="article-content">Location number: {{draw.LocationNumber}} Year: {{draw.DrawingDate}}</p>
+                </div>
+            </article>
+    {% endfor%}
+{% endblock content %}
+
+
+
