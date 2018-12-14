@@ -55,9 +55,11 @@ select count(*) as "Number of rows" from draw where LocationNumber = 489 and Dra
 
 -`python manage.py startapp polls`
 
+-`python manage.py makemigrations polls`
+
 -`python manage.py migrate`
 
--`python manage.py makemigrations polls`
+
 
 -`python manage.py shell`
 
