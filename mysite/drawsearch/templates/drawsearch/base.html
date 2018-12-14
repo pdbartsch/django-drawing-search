@@ -1,4 +1,6 @@
 {% load static %}
+{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +33,7 @@
                     <div class="collapse navbar-collapse" id="navbarToggle">
                       <div class="navbar-nav mr-auto">
                         <a class="nav-item nav-link" href="{% url 'search-home' %}">Home</a>
-                        <a class="nav-item nav-link" href="{% url 'search-about' %}">About</a>
+
                         <a class="nav-item nav-link" href="{% url 'search-result' %}">Result</a>
                       </div>
 
@@ -47,6 +49,36 @@
 
             <main role="main" class="container">
                 <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="content-section">
+                            <h3>Searchbar</h3>
+                            <p class='text-muted'>Start broad and refine search from there.
+
+                                <form action="result" method="GET">
+                                    {{ form|crispy }}
+                                    <div class="form-group">
+                                        <label for="locationNumber">Location Number:</label>
+                                        <input type="number" class="form-control" id="locationNumber" aria-describedby="locationNumberHelp" placeholder="Location Number">
+                                        <small id="locationNumberHelp" class="form-text text-muted">Normally this is the building number</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="drawingNumber">Drawing Number:</label>
+                                        <input type="number" class="form-control" id="drawingNumber" aria-describedby="drawingNumberHelp" placeholder="Drawing Number">
+                                        <small id="drawingNumberHelp" class="form-text text-muted">Original construction is 101 and they go up sequentially from there.</small>
+                                    </div>
+
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+
+                            </p>
+                        </div>                    
+                    </div>
+
                     <div class="col-md-8">
                         <h1>{{ title }}</h1>
                         {% if messages %}
@@ -58,21 +90,29 @@
                         {% endif %}
                         {% block content %}{% endblock %}
                     </div>
-                    <div class="col-md-4">
-                        <div class="content-section">
-                            <h3>Our Sidebar</h3>
-                            <p class='text-muted'>You can put any information here you'd like.
-                            <ul class="list-group">
-                                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                                <li class="list-group-item list-group-item-light">Announcements</li>
-                                <li class="list-group-item list-group-item-light">Calendars</li>
-                                <li class="list-group-item list-group-item-light">etc</li>
-                            </ul>
-                            </p>
-                        </div>
-                    </div>
+
+
                 </div>
             </main>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p class="text-left">
+                            Copyright &copy; 2018 The Regents of the University of California, All Rights Reserved
+                            &#x2022;
+                            <a href="http://www.policy.ucsb.edu/terms-of-use/">Terms of Use</a>
+                            &#x2022;
+                            <a href="https://www.facilities.ucsb.edu/about-us">About Us</a>
+                            &#x2022;
+                            Last Modified <time datetime="2018-12-214 class="published updated">December 12, 2018</time>
+                        </p>
+                        <p class="text-left">
+                            If any of the material on this page is not accessible to you, please <a href="https://www.facilities.ucsb.edu/departments/design-construction-services/contact-us">contact Paul Bartsch</a> and we will provide alternatives.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
 
 
