@@ -25,11 +25,14 @@ CREATE TABLE `draw` (
 `.tables`
 
 `.schema draw`
+`.schema drawsearch_search`
 
 `.mode csv`
 
 `.import data/draw.csv draw`
 `.import ../data/draw.csv drawsearch_search`
+
+select count(*) as "Number of rows" from drawsearch_search;
 
 select NewName from draw where LocationNumber = 525 and DrawingNumber = 101 and Discipline like '%arch%';
 
@@ -57,3 +60,5 @@ select count(*) as "Number of rows" from draw where LocationNumber = 489 and Dra
 -`python manage.py makemigrations polls`
 
 -`python manage.py shell`
+
+- `pip install django-crispy-forms` then make changes in settings

@@ -1,29 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
-# Create your views here.
-
-draws = [
-    {
-        'loc':525,
-        'draw':301,
-        'title':'library',
-        'year':2010
-    },
-    {
-        'loc':534,
-        'draw':101,
-        'title':'arts',
-        'year':2015
-    },
-    {
-        'loc':512,
-        'draw':101,
-        'title':'bioE',
-        'year':2017
-    }
-]
-
+from .models import Search
+from .forms import SearchForm
 
 def home(request):
     context = {
@@ -39,7 +17,8 @@ def about(request):
 
 def result(request):
     context = {
-        'draws':draws,
+        # 'draws':draws,
+        'draws': Search.objects.filter(LocationNumber = 525),
         'title':'Results'
     }
     return render(request, 'drawsearch/result.html', context)

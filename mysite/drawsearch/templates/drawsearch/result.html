@@ -4,11 +4,12 @@
         <article class="media content-section">
                 <div class="media-body">
                     <div class="article-metadata">
-                        <a class="mr-2" href="#">{{ draw.title }}</a>
-                    <sma    ll class="text-muted">{{ draw.title }}</small>
+                            <!-- D:\UCSB_Data\000_UCSB_PDF_Drawings -->
+                        <a class="mr-2" href="#">{{ draw.NewName }}</a>
+                    <sma    ll class="text-muted">{{ draw.ProjectTitle }}</small>
                     </div>
-                    <h2><a class="article-title" href="#">{{ draw.title }}</a></h2>
-                    <p class="article-content">Location number: {{draw.loc}} Year: {{draw.year}}</p>
+                    <h2><a class="article-title" href="#">{{ draw.SheetTitle }}</a></h2>
+                    <p class="article-content">Location number: {{draw.LocationNumber}} Year: {{draw.DrawingDate}}</p>
                 </div>
             </article>
     {% endfor%}
