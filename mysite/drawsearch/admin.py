@@ -6,16 +6,9 @@ admin.site.site_header = 'UCSB Record Drawing Administration'
 class SearchAdmin(admin.ModelAdmin):
     # fields = ['pub_date', 'question_text']
     fieldsets = [
-        (None,               {'fields': ['NewName']}),
-        (None,               {'fields': ['LocationNumber']}),
-        (None,               {'fields': ['DrawingNumber']}),
-        (None,               {'fields': ['ProjectTitle']}),
-        (None,               {'fields': ['ProjectNumber']}),
-        (None,               {'fields': ['DrawingDate']}),
-        (None,               {'fields': ['SheetTitle']}),
-        (None,               {'fields': ['SheetNumber']}),
-        (None,               {'fields': ['Discipline']}),
-        (None,               {'fields': ['DrawingVersion']}),
+        ('Drawing Info', {'fields': ['NewName', 'DrawingNumber', 'ProjectTitle', 'ProjectNumber', 'DrawingDate', 'SheetTitle', 'SheetNumber', 'Discipline', 'DrawingVersion' ]}),
+        # ('Another Section', {'fields': ['field1', 'field2', 'etc']}),
+ 
 
     ]    
     list_display = ('NewName', 'LocationNumber', 'DrawingNumber', 'ProjectTitle', 'SheetTitle', 'Discipline')
