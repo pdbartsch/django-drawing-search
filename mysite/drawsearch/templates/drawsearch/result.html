@@ -1,19 +1,38 @@
 {% extends 'drawsearch/base.html' %}
 {% block content %}
-    {% for draw in draws %}
-        <article class="media content-section">
-                <div class="media-body">
-                    <div class="article-metadata">
-                            <!-- D:\UCSB_Data\000_UCSB_PDF_Drawings -->
-                        <a class="mr-2" href="#">{{ draw.NewName }}</a>
-                    <sma    ll class="text-muted">{{ draw.ProjectTitle }}</small>
-                    </div>
-                    <h2><a class="article-title" href="#">{{ draw.SheetTitle }}</a></h2>
-                    <p class="article-content">Location number: {{draw.LocationNumber}} Year: {{draw.DrawingDate}}</p>
-                </div>
-            </article>
-    {% endfor%}
+    <p>You searched for: <strong>{{ query }}</strong> and  returned <strong> {{ resultcount }} </strong> results.</p>
+
+    {% if draws %}
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">Location Number</th>
+            <th scope="col">Drawing Number</th>
+            <th scope="col">Project Title</th>
+            <th scope="col">Sheet Title</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for draw in draws %}
+            <tr>
+            <th scope="row">{{draw.LocationNumber}}</th>
+            <td>{{draw.DrawingNumber}}</td>
+            <td>{{draw.ProjectTitle}}</td>
+            <td>{{draw.SheetTitle}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+    {% else %}
+        <p>No drawings matched your search criteria.</p>
+    {% endif %}
 {% endblock content %}
 
-
-
+<!--
+Discipline, DrawingDate, DrawingNumber, DrawingVersion, LocationNumber, NewName, Notes, OldName, PhysicalLocation,
+ProjectNumber, ProjectTitle, SheetNumber, SheetTitle, id
+-->

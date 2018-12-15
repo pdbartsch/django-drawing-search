@@ -32,13 +32,16 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarToggle">
                       <div class="navbar-nav mr-auto">
-                        <a class="nav-item nav-link" href="{% url 'search-home' %}">Home</a>
-                        <a class="nav-item nav-link" href="{% url 'search-result' %}">Result</a>
-                        <a class="nav-item nav-link" href="{% url 'search_form' %}">search_form</a>
+                        <!-- <a class="nav-item nav-link" href="{% url 'search-home' %}">Home</a> -->
+                        <!-- <a class="nav-item nav-link" href="{% url 'search-result' %}">Result</a> -->
+
                       </div>
 
                       <!-- Navbar Right Side -->
                       <div class="navbar-nav">
+                        <a class="nav-item nav-link" >It is the {% now "jS \o\f F" %}</a>
+
+                        <!-- <a class="nav-item nav-link" href="#">{% lorem 2 w random %}</a> -->
                         <a class="nav-item nav-link" href="#">Login</a>
                         <a class="nav-item nav-link" href="#">Register</a>
                       </div>
@@ -55,29 +58,61 @@
                             <h3>Searchbar</h3>
                             <p class='text-muted'>Start broad and refine search from there.
 
-                                <form action="result" method="GET">
-                                    {{ form|crispy }}
-                                    {{ hform }}
+                                <form action="/search/" method="GET">
+
                                     <div class="form-group">
                                         <label for="locationNumber">Location Number:</label>
-                                        <input type="number" class="form-control" id="locationNumber" aria-describedby="locationNumberHelp" placeholder="Location Number">
+                                        <input type="number" name="locnum" class="form-control" id="locationNumber" aria-describedby="locationNumberHelp" placeholder="Location Number">
                                         <small id="locationNumberHelp" class="form-text text-muted">Normally this is the building number</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="drawingNumber">Drawing Number:</label>
-                                        <input type="number" class="form-control" id="drawingNumber" aria-describedby="drawingNumberHelp" placeholder="Drawing Number">
+                                        <input type="number" name="drawnum" class="form-control" id="drawingNumber" aria-describedby="drawingNumberHelp" placeholder="Drawing Number">
                                         <small id="drawingNumberHelp" class="form-text text-muted">Original construction is 101 and they go up sequentially from there.</small>
                                     </div>
-
-                                    <div class="form-group form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                    <div class="form-group">
+                                            <label for="projectTitle">Project Title:</label>
+                                            <input type="text" name="projtitle" class="form-control" id="projectTitle" aria-describedby="projectTitleHelp" placeholder="Project Title">
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="sheetTitle">Sheet Title:</label>
+                                            <input type="text" name="shttitle" class="form-control" id="sheetTitle" aria-describedby="sheetTitleHelp" placeholder="Sheet Title">
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="sheetNumber">Sheet Number:</label>
+                                            <input type="text" name="shtnum" class="form-control" id="sheetNumber" aria-describedby="sheetNumberHelp" placeholder="Sheet Number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="designDesignation">Design Designation</label>
+                                        <select class="form-control" name="discp" id="designDesignation">
+                                            <option value = "">ANY</option>
+                                            <option>ARCHITECTURAL</option>
+                                            <option>AUDIO VISUAL</option>
+                                            <option>CIVIL</option>
+                                            <option>ELECTRICAL</option>
+                                            <option>FIRE ALARM</option>
+                                            <option>GENERAL NOTES</option>
+                                            <option>LANDSCAPE</option>
+                                            <option>LIFE SAFETY</option>
+                                            <option>MECHANICAL</option>
+                                            <option>PLUMBING</option>
+                                            <option>SHOP DRAWINGS</option>
+                                            <option>SPECIFICATIONS</option>
+                                            <option>STRUCTURAL</option>
+                                            <option>TELECOMM</option>
+                                            <option>TITLE INDEX</option>
+                                            <option>TRAFFIC</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="drawingDate">Year Since (yyyy):</label>
+                                            <input type="number" name="drawdate" class="form-control" id="drawingDate" aria-describedby="drawingDateHelp" placeholder="YYYY">
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
 
                             </p>
-                        </div>                    
+                        </div>
                     </div>
 
                     <div class="col-md-8">
