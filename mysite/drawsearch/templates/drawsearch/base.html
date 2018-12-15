@@ -33,8 +33,8 @@
                     <div class="collapse navbar-collapse" id="navbarToggle">
                       <div class="navbar-nav mr-auto">
                         <a class="nav-item nav-link" href="{% url 'search-home' %}">Home</a>
-
                         <a class="nav-item nav-link" href="{% url 'search-result' %}">Result</a>
+                        <a class="nav-item nav-link" href="{% url 'search_form' %}">search_form</a>
                       </div>
 
                       <!-- Navbar Right Side -->
@@ -57,6 +57,7 @@
 
                                 <form action="result" method="GET">
                                     {{ form|crispy }}
+                                    {{ hform }}
                                     <div class="form-group">
                                         <label for="locationNumber">Location Number:</label>
                                         <input type="number" class="form-control" id="locationNumber" aria-describedby="locationNumberHelp" placeholder="Location Number">
