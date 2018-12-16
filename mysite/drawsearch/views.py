@@ -30,7 +30,7 @@ def search(request):
     #eventually include all non null fields
 
 
-    draws = Search.objects.filter(LocationNumber=locnum).order_by('NewName')
+    draws = Search.objects.filter(LocationNumber=locnum).order_by('LocationNumber', '-DrawingNumber', 'SheetNumber')
     resultcount = Search.objects.filter(LocationNumber=locnum).count()
 
     return render(request, 'drawsearch/result.html',
