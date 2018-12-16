@@ -4,28 +4,37 @@
 
     {% if draws %}
 
-    <table class="table">
+    <table class="table table-sm table-hover" id="clickTable" >
         <thead class="thead-dark">
             <tr>
-            <th scope="col">Location Number</th>
-            <th scope="col">Drawing Number</th>
+            <th scope="col"></th>
+            <th scope="col">Location</th>
+            <th scope="col">Drawing</th>
+            <th scope="col">Sheet</th>
             <th scope="col">Project Title</th>
             <th scope="col">Sheet Title</th>
+            <th scope="col">Year</th>
+
             </tr>
         </thead>
-        <tbody>
+        <tbody >
         {% for draw in draws %}
             <tr>
-            <th scope="row">{{draw.LocationNumber}}</th>
+            <!-- <td class="form-check">
+                    <input type="checkbox" class="form-check-input" id="selectCheck">
+            </td> -->
+            <td><a href="{{draw.NewName}}"><i class="fas fa-download"></i></a></td>
+            <td>{{draw.LocationNumber}}</td>
             <td>{{draw.DrawingNumber}}</td>
+            <td>{{draw.SheetNumber}}</td>
             <td>{{draw.ProjectTitle}}</td>
             <td>{{draw.SheetTitle}}</td>
+            <td>{{draw.DrawingDate}}</td>
             </tr>
+
         {% endfor %}
         </tbody>
     </table>
-
-
 
     {% else %}
         <p>No drawings matched your search criteria.</p>

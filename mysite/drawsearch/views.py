@@ -27,22 +27,42 @@ def search_form(request):
 def search(request):
     if 'locnum' in request.GET and request.GET['locnum']:
         locnum = request.GET['locnum']
-        draws = Search.objects.filter(LocationNumber=locnum)
-        resultcount = Search.objects.filter(LocationNumber=locnum).count()
+    #eventually include all non null fields
 
-        #eventually include all non null fields
 
-        # filters = {}
-        # if LocationNumber:
-        #     filters['LocationNumber'] = LocationNumber
-        # if DrawingNumber:
-        #     filters['DrawingNumber'] = DrawingNumber
+    draws = Search.objects.filter(LocationNumber=locnum).order_by('NewName')
+    resultcount = Search.objects.filter(LocationNumber=locnum).count()
 
-        # draws = Search.objects.filter(**filters)
-
-        return render(request, 'drawsearch/result.html',
-                      {'draws': draws, 'resultcount':resultcount, 'query': locnum})
+    return render(request, 'drawsearch/result.html',
+                    {'draws':draws, 'resultcount':resultcount, 'query':locnum})
 
 # can be improved with pop up box or redirect
-    else:
-        return HttpResponse('Please submit a search term.')
+    # else:
+    #     return HttpResponse('Please submit a search term.')
+
+# locnum      locationNumber        LocationNumber
+# drawnum     drawingNumber         DrawingNumber
+# projtitle   projectTitle          ProjectTitle
+# shttitle    sheetTitle            SheetTitle
+# shtnum      sheetNumber           SheetNumber
+# discp       designDesignation     Discipline
+# drawdate    drawingDate           DrawingDate
+
+
+    # filters = {}
+    # if locnum in request.GET and request.GET['locnum']:
+    #     filters['LocationNumber'] = locnum
+    # if drawnum in request.GET and request.GET['drawnum']:
+    #     filters['DrawingNumber'] = drawnum
+    # if projtitle in request.GET and request.GET['projtitle']:
+    #     filters['ProjectTitle'] = projtitle
+    # if shttitle in request.GET and request.GET['shttitle']:
+    #     filters['SheetTitle'] = shttitle
+    # if shtnum in request.GET and request.GET['shtnum']:
+    #     filters['SheetNumber'] = shtnum
+    # if discp in request.GET and request.GET['discp']:
+    #     filters['Discipline'] = discp
+    # if drawdate in request.GET and request.GET['drawdate']:
+    #     filters['DrawingDate'] = drawdate
+
+    # draws = Search.objects.filter(**filters)
