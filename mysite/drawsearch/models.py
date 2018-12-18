@@ -1,8 +1,4 @@
 from django.db import models
-# from django.utils import timezone
-# from django.contrib.auth.models import User
-
-# Create your models here.
 
 class Search(models.Model):
     OldName = models.CharField(max_length=255)
@@ -18,6 +14,7 @@ class Search(models.Model):
     DrawingVersion = models.CharField(max_length=255)
     Notes = models.CharField(max_length=255)
     PhysicalLocation = models.CharField(max_length=255)
+    # Think about adding these later:
     # date_added = models.DateTimeField(default=timezone.now)
     # added_by = models.ForeignKey(User, on_delete=models.SET_NULL)
     class Meta:
@@ -26,5 +23,3 @@ class Search(models.Model):
 
     def __str__(self):
             return self.NewName
-
-
