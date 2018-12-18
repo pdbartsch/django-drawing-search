@@ -2,43 +2,60 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .models import Search
-
-#improve by switching to django forms
-# from .forms import SearchForm
+from .forms import SearchForm
 
 def home(request):
+    form = SearchForm()
     context = {
         'title':'Search Tips & Recommendations',
+        'form':form,
     }
     return render(request, 'drawsearch/home.html', context)
 
-
 def result(request):
-    context = {
-        # 'draws':draws,
-        # 'draws': Search.objects.filter(LocationNumber = 525),
-        'title':'Results'
-    }
+    form = SearchForm(request.GET)
+    if form.is_valid():
+        # process the data in form.cleaned_data
+        locnum = form.cleaned_data['locnum']
+        drawnum = form.cleaned_data['drawnum']
+        projtitle = form.cleaned_data['projtitle']
+        shttitle = form.cleaned_data['shttitle']
+        shtnum = form.cleaned_data['shtnum']
+        discp = form.cleaned_data['discp']
+        drawdate = form.cleaned_data['drawdate']
+
+        # Only include fields that have a value meaning the user has searched by that field
+        filters = {}
+        if locnum:
+            filters['LocationNumber'] = locnum
+        if drawnum:
+            filters['DrawingNumber'] = drawnum
+        if projtitle:
+            filters['ProjectTitle'+'__contains'] = projtitle
+        if shttitle:
+            filters['SheetTitle'+'__contains'] = shttitle
+        if shtnum:
+            filters['SheetNumber'+'__contains'] = shtnum
+        if discp:
+            filters['Discipline'+'__contains'] = discp
+        if drawdate: #greater than or equal to
+            filters['DrawingDate'+'__gte'] = drawdate
+
+        draws = Search.objects.filter(**filters).order_by('LocationNumber', '-DrawingNumber', 'SheetNumber')
+        resultcount = Search.objects.filter(**filters).count()
+        context = {
+            'title':'Results',
+            'draws':draws, 
+            'resultcount':resultcount, 
+            'form':form,
+            'filters':filters
+        }
+    else:
+        form = SearchForm()
+        context = {
+            'form':form,
+        }
     return render(request, 'drawsearch/result.html', context)
-
-def search_form(request):
-    return render(request, 'drawsearch/search_form.html')
-
-def search(request):
-    if 'locnum' in request.GET and request.GET['locnum']:
-        locnum = request.GET['locnum']
-    #eventually include all non null fields
-
-
-    draws = Search.objects.filter(LocationNumber=locnum).order_by('LocationNumber', '-DrawingNumber', 'SheetNumber')
-    resultcount = Search.objects.filter(LocationNumber=locnum).count()
-
-    return render(request, 'drawsearch/result.html',
-                    {'draws':draws, 'resultcount':resultcount, 'query':locnum})
-
-# can be improved with pop up box or redirect
-    # else:
-    #     return HttpResponse('Please submit a search term.')
 
 # locnum      locationNumber        LocationNumber
 # drawnum     drawingNumber         DrawingNumber
@@ -47,22 +64,3 @@ def search(request):
 # shtnum      sheetNumber           SheetNumber
 # discp       designDesignation     Discipline
 # drawdate    drawingDate           DrawingDate
-
-
-    # filters = {}
-    # if locnum in request.GET and request.GET['locnum']:
-    #     filters['LocationNumber'] = locnum
-    # if drawnum in request.GET and request.GET['drawnum']:
-    #     filters['DrawingNumber'] = drawnum
-    # if projtitle in request.GET and request.GET['projtitle']:
-    #     filters['ProjectTitle'] = projtitle
-    # if shttitle in request.GET and request.GET['shttitle']:
-    #     filters['SheetTitle'] = shttitle
-    # if shtnum in request.GET and request.GET['shtnum']:
-    #     filters['SheetNumber'] = shtnum
-    # if discp in request.GET and request.GET['discp']:
-    #     filters['Discipline'] = discp
-    # if drawdate in request.GET and request.GET['drawdate']:
-    #     filters['DrawingDate'] = drawdate
-
-    # draws = Search.objects.filter(**filters)
